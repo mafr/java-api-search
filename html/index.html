@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+ 
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Javadoc lookup</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-combined.min.css" rel="stylesheet">
+    <style type="text/css">
+      #results {
+	width: 100%;
+      }
+      #results td:first-child {
+        width: 5%;
+        text-align: center;
+	overflow: hidden;
+	white-space: nowrap;
+      }
+      #results td:nth-child(2) {
+        width: 35%;
+      }
+      #results td:nth-child(3) {
+        width: 50%;
+      }
+      #results td:last-child {
+        width: 10%;
+      }
+    </style>
+  </head>
+  <body>
+ 
+    <div class="container">
+
+      <div class="row">
+        <div id="main" class="span12">
+          <h3>Javadoc Search</h3>
+
+	  <form class="form-search">
+	    <div class="input-append">
+              <input id="query" type="text"
+                     class="input-xlarge search-query"
+                     placeholder="Enter Java class name" size="50" />
+              <button id="go" type="button" class="btn">Go!</button>
+            </div>
+          </form>
+
+          <table id="results" class="table table-striped table-hover">
+            <tbody>
+            </tbody>
+          </table>
+        </div>
+
+      </div>
+
+    </div> <!-- /container -->
+
+    <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+    <script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/js/bootstrap.min.js"></script>
+    <script src="search.js"></script>
+
+  </body>
+</html>
