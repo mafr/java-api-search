@@ -2,7 +2,7 @@
 #
 # Download lists of API elements from a javadoc API index.
 #
-# Usage: create-json-db.py > db.json
+# Usage: create-json-db.py > api-index.js
 #
 import json
 import re

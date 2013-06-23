@@ -1,12 +1,13 @@
 $(function() {
+  var dbUrl = "api-index.js";
+  var db = [ ];
+
   var jtypes = {
       "class": "C",
       "interface": "I",
       "enum": "E",
       "annotation": "A",
   }
-  var dbUrl = "../data/db.json";
-  var db = [ ];
 
   function mkDb(rawData) {
       types = $.map(rawData.types, function(val, i) {
