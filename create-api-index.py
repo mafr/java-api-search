@@ -35,20 +35,25 @@ def load_index(url, label):
             index.append((jtype, name, pkg, url+href, label))
     return index
 
-index = [ ]
-for label, url in APIS.items():
-    r = load_index(url, label)
-    print("Got {} entries from {}".format(len(r), label), file=sys.stderr)
-    index.extend(r)
+def load_indexes(config):
+    index = [ ]
+    for label, url in config.items():
+        r = load_index(url, label)
+        print("Got {} entries from {}".format(len(r), label), file=sys.stderr)
+        index.extend(r)
+    # sort by type name
+    return sorted(index, key=lambda x: x[1])
 
-# sort by type name
-index = sorted(index, key=lambda x: x[1])
+def dump_to_file(f, index):
+    data = {
+        'apis': APIS,
+        'types': index,
+    }
+    json.dump(data, f, indent=2, sort_keys=True)
 
-db = {
-    'apis': APIS,
-    'types': index,
-}
 
-json.dump(db, sys.stdout, indent=2, sort_keys=True)
+if __name__ == '__main__':
+    index = load_indexes(APIS)
+    dump_to_file(sys.stdout, index)
 
 # EOF
