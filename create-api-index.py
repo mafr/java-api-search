@@ -8,21 +8,22 @@ import json
 import re
 import sys
 import urllib.request
+import configparser
 
-APIS = {
-  'Java SE 7':
-     'http://docs.oracle.com/javase/7/docs/api/', 
-  'Java EE 6':
-    'http://docs.oracle.com/javaee/6/api/', 
-  'Guava':
-    'http://docs.guava-libraries.googlecode.com/git-history/release/javadoc/', 
-}
+
+def load_config(filename):
+    config = configparser.ConfigParser()
+    config.read(filename)
+    apis = { }
+    for key in config.sections():
+        section = config[key]
+        apis[section['label']] = section['url']
+    return apis
 
 RE = re.compile(
     r'<a href="(.*?)" title="(.*?) in (.*?)">(?:<i>)?(.*?)(?:</i>)?</a>',
     re.IGNORECASE
 )
-
 
 def load_index(url, label):
     index = [ ]
@@ -41,19 +42,19 @@ def load_indexes(config):
         r = load_index(url, label)
         print("Got {} entries from {}".format(len(r), label), file=sys.stderr)
         index.extend(r)
-    # sort by type name
-    return sorted(index, key=lambda x: x[1])
+    return sorted(index, key=lambda x: x[1]) # sort by type name
 
-def dump_to_file(f, index):
+def dump_to_file(f, config, index):
     data = {
-        'apis': APIS,
+        'apis': config,
         'types': index,
     }
     json.dump(data, f, indent=2, sort_keys=True)
 
 
 if __name__ == '__main__':
-    index = load_indexes(APIS)
-    dump_to_file(sys.stdout, index)
+    config = load_config('config.ini')
+    index = load_indexes(config)
+    dump_to_file(sys.stdout, config, index)
 
 # EOF
