@@ -27,6 +27,14 @@ $(function() {
       }
   }
 
+  function showError(input) {
+      var tbody = $("tbody").empty();
+      tbody.append(
+          $("<div/>", { "class": "alert alert-error" }).text(
+	      "Cannot read API index file '" + dbUrl + "'. Did you create it?")
+      );
+  }
+
   function findMatching(input) {
       input = input.toLowerCase();
       if (input.length == 0)
@@ -75,7 +83,7 @@ $(function() {
 
   $(document).ready(function() {
       $("#query").focus();
-      $.getJSON(dbUrl, { }).done(mkDb);
+      $.getJSON(dbUrl, { }).done(mkDb).error(showError);
   });
 
 });
