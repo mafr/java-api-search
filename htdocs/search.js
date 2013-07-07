@@ -1,6 +1,6 @@
 $(function() {
   var dbUrl = "api-index.js";
-  var db = [ ];
+  var db = { };
 
   var jtypes = {
       "class": "C",

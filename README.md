@@ -14,11 +14,14 @@ of public Java libraries and create a JSON object from it. Example:
     $ ./create-api-index.py > htdocs/api-index.js
 
 Publish the JSON object on a web server together with the HTML and JavaScript
-content and load the index.html from your browser.
+content and load the index.html from your browser. The RETURN key takes you
+to the first hit, TAB lets you select the other hits. All results open in a
+new browser window.
 
 For testing purposes you can serve the htdocs directory locally:
 
     $ cd htdocs
     $ python3 -m http.server
 
-Point your browser to http://localhost:8000/ and give it a try.
+Point your browser to [http://localhost:8000/](http://localhost:8000/) and
+give it a try.
