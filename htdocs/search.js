@@ -27,12 +27,10 @@ $(function() {
       }
   }
 
-  function showError(input) {
-      var tbody = $("tbody").empty();
-      tbody.append(
-          $("<div/>", { "class": "alert alert-error" }).text(
-	      "Cannot read API index file '" + dbUrl + "'. Did you create it?")
-      );
+  function showError() {
+      $("#errorbox").removeClass("hidden");
+      $("#msg").text(
+          "Cannot read API index file '" + dbUrl + "'. Did you create it?");
   }
 
   function findMatching(input) {
