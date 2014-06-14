@@ -4,45 +4,33 @@
   <head>
     <meta charset="utf-8" />
     <title>Javadoc lookup</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-combined.min.css" rel="stylesheet">
-    <style type="text/css">
-      #results {
-	width: 100%;
-      }
-      #results td:first-child {
-        width: 5%;
-        text-align: center;
-	overflow: hidden;
-	white-space: nowrap;
-      }
-      #results td:nth-child(2) {
-        width: 35%;
-      }
-      #results td:nth-child(3) {
-        width: 50%;
-      }
-      #results td:last-child {
-        width: 10%;
-      }
-    </style>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.min.css">
   </head>
   <body>
  
     <div class="container">
 
       <div class="row">
-        <div id="main" class="span12">
+        <div id="main" class="col-md-6">
           <h3>Javadoc Search</h3>
 
-	  <form class="form-search">
-	    <div class="input-append">
-              <input id="query" type="text"
-                     class="input-xlarge search-query"
-                     placeholder="Enter Java class name" size="50" />
-              <button id="go" type="button" class="btn">Go!</button>
+          <form class="navbar-form navbar-left" role="search">
+            <div class="input-group">
+              <input id="query" type="text" class="form-control"
+                     placeholder="Enter Java class name" size="20" />
+              <span class="input-group-btn">
+                <button id="go" type="button" class="btn btn-default">Go!</button>
+              </span>
             </div>
           </form>
+
+        </div>
+      </div>
+
+      <div class="row">
+        <div id="main" class="col-md-12">
 
           <div id="errorbox" class="alert alert-error hidden">
             <strong>Error!</strong> <span id="msg"></span>
@@ -52,14 +40,14 @@
             <tbody>
             </tbody>
           </table>
-        </div>
 
+        </div>
       </div>
 
     </div> <!-- /container -->
 
     <script src="http://code.jquery.com/jquery-2.1.1.js"></script>
-    <script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/js/bootstrap.min.js"></script>
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
     <script src="search.js"></script>
 
   </body>
