@@ -21,7 +21,7 @@ def load_config(filename):
     return apis
 
 RE = re.compile(
-    r'<a href="(.*?)" title="(.*?) in (.*?)">(?:<i>)?(.*?)(?:</i>)?</a>',
+    r'<a href="(.*?)" title="(.*?) in (.*?)">(?:<i>|<span .*?>)?(.*?)(?:</i>|</span>)?</a>',
     re.IGNORECASE
 )
 
